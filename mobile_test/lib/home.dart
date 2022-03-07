@@ -10,11 +10,11 @@ class Home extends StatelessWidget {
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(top: 100),
+          margin: EdgeInsets.only(top: 70),
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -53,14 +53,23 @@ class Home extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                margin: EdgeInsets.only(top: 20, left: 10, right: 10),
                 decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.black, Colors.grey.shade800],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    stops: [0.0, 1.0],
+                    tileMode: TileMode.clamp,
+                  ),
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey.shade900,
                 ),
                 width: double.infinity,
                 child: TextFormField(
+                  
                   decoration: InputDecoration(
+                    border: InputBorder.none,
                       hintText: 'Search Courses ,Educators...',
                       hintStyle: TextStyle(color: Colors.grey),
                       suffixIcon: Icon(
@@ -73,7 +82,15 @@ class Home extends StatelessWidget {
                 height: 30,
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.grey.shade900),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.black, Colors.grey.shade900],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    stops: [0.0, 1.0],
+                    tileMode: TileMode.clamp,
+                  ),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
@@ -85,29 +102,34 @@ class Home extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           Container(
-                            margin: EdgeInsets.only(right: 140),
+                            margin: EdgeInsets.only(right: 80),
                             child: TabBar(
+                              labelPadding: EdgeInsets.only(right: 24),
                               indicator: BoxDecoration(
                                 border: Border(
                                   top: BorderSide(
                                       color: Colors.white, width: 3.0),
                                 ),
                               ),
+                              
                               indicatorColor: Colors.white,
                               labelColor: Colors.white,
+                              labelStyle: TextStyle(
+                                
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
                               unselectedLabelColor: Colors.grey.shade700,
                               tabs: [
-                                Tab(text: 'My Courses'),
+                                Tab(
+                                  text: 'My Courses',
+                                ),
                                 Tab(text: 'Trending'),
                               ],
                             ),
                           ),
                           Container(
                             height: 220, //height of TabBarView
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    top: BorderSide(
-                                        color: Colors.grey, width: 0.5))),
                             child: TabBarView(
                               children: <Widget>[
                                 Container(
@@ -117,6 +139,10 @@ class Home extends StatelessWidget {
                                   itemBuilder: (c, i) {
                                     final item = listModels[i];
                                     return Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        color: Colors.grey.shade900,
+                                      ),
                                       margin: EdgeInsets.only(left: 10),
                                       child: Column(
                                         crossAxisAlignment:
@@ -213,53 +239,64 @@ class Home extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Top Educators',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                  Padding(
+                    
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      'Top Educators',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   SizedBox(
                     height: 15,
                   ),
                   Container(
-                      height: 300,
+                      height: 220,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: listModels.length,
+                        itemCount: listAuthors.length,
                         itemBuilder: (c, i) {
-                          final item = listTrendingModels[i];
+                          final item = listAuthors[i];
                           return Container(
+                            width: 140,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.grey.shade900,
+                            ),
                             margin: EdgeInsets.only(left: 10),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.only(bottom: 10),
-                                  height: 120,
-                                  width: 200,
+                                  height: 80,
+                                  width: 80,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey,
+                                      borderRadius: BorderRadius.circular(50),
                                       image: DecorationImage(
-                                          fit: BoxFit.fill,
                                           image:
                                               NetworkImage('${item.image}'))),
                                 ),
-                                Text(
-                                  '${item.title}',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 25),
-                                ),
                                 SizedBox(
-                                  height: 6,
+                                  height: 20,
                                 ),
                                 Text(
                                   '${item.author}',
                                   style: TextStyle(
-                                      color: Colors.grey.shade400,
-                                      fontSize: 15),
+                                      color: Colors.white, fontSize: 17),
                                 ),
+                                Text(
+                                  'Courses',
+                                  style: TextStyle(
+                                      color: Colors.grey.shade400,
+                                      fontSize: 10),
+                                ),
+                                Icon(Icons.keyboard_arrow_down_rounded,
+                                    color: Colors.grey.shade600)
                               ],
                             ),
                           );

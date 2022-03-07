@@ -34,7 +34,7 @@ List<Models> listModels = [
 ];
 
 List<Models> listTrendingModels = [
-   Models(
+  Models(
       title: 'Java',
       author: 'James Gosling',
       image:
@@ -58,5 +58,32 @@ List<Models> listTrendingModels = [
       author: 'Facebook',
       image:
           'https://glints.com/id/lowongan/wp-content/uploads/2020/10/logo-reactjs.jpg'),
- 
+];
+
+List<Models> listAuthors = [
+  Models(
+      title: 'Go Lang',
+      author: 'Albert',
+      image:
+          'https://img.icons8.com/external-victoruler-flat-victoruler/344/external-boy-people-victoruler-flat-victoruler-8.png'),
+  Models(
+      title: 'Java',
+      author: 'Alexander',
+      image:
+          'https://img.icons8.com/external-victoruler-flat-victoruler/344/external-boy-people-victoruler-flat-victoruler.png'),
+  Models(
+      title: 'JavaScript',
+      author: 'Brandon',
+      image:
+          'https://img.icons8.com/external-victoruler-flat-victoruler/344/external-boy-people-victoruler-flat-victoruler-5.png'),
+  Models(
+      title: 'Flutter',
+      author: 'Brian',
+      image:
+          'https://img.icons8.com/external-victoruler-linear-colour-victoruler/344/external-boy-occupation-and-people-victoruler-linear-colour-victoruler.png'),
+  Models(
+      title: 'React JS',
+      author: 'Jordan',
+      image:
+          'https://img.icons8.com/external-victoruler-flat-victoruler/344/external-boy-people-victoruler-flat-victoruler.png'),
 ];
